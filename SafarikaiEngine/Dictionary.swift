@@ -48,24 +48,24 @@ public class Dict {
         }
     }
 
-    static func convertEdict2() {
-        guard let data = try? String(contentsOfFile: "/tmp/edict2u") else {
-            fatalError("/tmp/edict2u not found!")
-        }
-        let dictData = DictData(string: data)
-
-        do {
-            let entriesPath = "/tmp/entries.json"
-            let entriesData = try JSONEncoder().encode(dictData.entries)
-            FileManager.default.createFile(atPath: entriesPath, contents: entriesData, attributes: nil)
-
-            let indexesPath = "/tmp/indexes.json"
-            let indexesData = try JSONEncoder().encode(dictData.indexes)
-            FileManager.default.createFile(atPath: indexesPath, contents: indexesData, attributes: nil)
-        } catch {
-            fatalError(error.localizedDescription)
-        }
-    }
+//    static func convertEdict2() {
+//        guard let data = try? String(contentsOfFile: "/tmp/edict2u") else {
+//            fatalError("/tmp/edict2u not found!")
+//        }
+//        let dictData = DictData(string: data)
+//
+//        do {
+//            let entriesPath = "/tmp/entries.json"
+//            let entriesData = try JSONEncoder().encode(dictData.entries)
+//            FileManager.default.createFile(atPath: entriesPath, contents: entriesData, attributes: nil)
+//
+//            let indexesPath = "/tmp/indexes.json"
+//            let indexesData = try JSONEncoder().encode(dictData.indexes)
+//            FileManager.default.createFile(atPath: indexesPath, contents: indexesData, attributes: nil)
+//        } catch {
+//            fatalError(error.localizedDescription)
+//        }
+//    }
 }
 
 extension Dict {
@@ -79,6 +79,7 @@ extension Dict {
             return (results, nil)
         }
 
+        // Chop off ending characters until we find
         for len in (1 ... word.count).reversed() {
             let part = word.substring(to: len)
             let records = search(word: part)
@@ -102,21 +103,34 @@ extension Dict {
         }
 
         var results: [Result] = []
-
-        variants(for: word).forEach { variant in
-            if let index = dictData.indexes[variant] {
-                index.forEach { idx in
-                    let entryIndex = Int(idx[0])!
-                    push(
-                        index: abs(entryIndex),
-                        kana: entryIndex < 0 ? variant : idx[1],
-                        kanji: entryIndex < 0 ? idx[1] : variant,
-                        to: &results,
-                        matchedWord: variant
-                    )
-                }
-            }
+        // TODO -- do dict search here
+        
+        if let index = dictData.indexes[word] {
+            let entryIndex = Int(index[0])!
+            push(
+                index: abs(entryIndex),
+                hanzi: word,
+                pinyin: index[1],
+                to: &results,
+                matchedWord: word
+            )
         }
+
+
+//        variants(for: word).forEach { variant in
+//            if let index = dictData.indexes[variant] {
+//                index.forEach { idx in
+//                    let entryIndex = Int(idx[0])!
+//                    push(
+//                        index: abs(entryIndex),
+//                        kana: entryIndex < 0 ? variant : idx[1],
+//                        kanji: entryIndex < 0 ? idx[1] : variant,
+//                        to: &results,
+//                        matchedWord: variant
+//                    )
+//                }
+//            }
+//        }
 
         return results
     }
@@ -138,14 +152,14 @@ extension Dict {
         return results
     }
 
-    func push(index: Int, kana: String, kanji: String, to results: inout [Result], matchedWord: String) {
+    func push(index: Int, hanzi: String, pinyin: String, to results: inout [Result], matchedWord: String) {
         if cachedIndexes.contains(index) {
             return
         }
 
         cachedIndexes.insert(index)
 
-        let pending = Result(kana: kana, kanji: kanji, translation: dictData.entries[index], romaji: Romaji.romaji(from: kana))
+        let pending = Result(hanzi: hanzi, pinyin: pinyin, translation: dictData.entries[index])
         results.append(pending)
     }
 }

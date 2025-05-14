@@ -9,14 +9,13 @@
 import Foundation
 
 public struct Result {
-    let kana, kanji, translation, romaji: String
+    let hanzi, pinyin, translation: String
 
     public func toJSON() -> [String: String] {
         return [
-            "kana": kana,
-            "kanji": kanji,
+            "hanzi": hanzi,
+            "pinyin": pinyin,
             "translation": translation,
-            "romaji": romaji
         ]
     }
 }

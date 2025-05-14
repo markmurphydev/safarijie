@@ -16,6 +16,17 @@ class Client {
     this.rangeOffset   = 0;
     this.altPressed    = false;
 
+    // Mapping for pinyin tone conversion
+    this.pinyinVowels = {
+      'a': ['ā', 'á', 'ǎ', 'à', 'a'],
+      'e': ['ē', 'é', 'ě', 'è', 'e'],
+      'i': ['ī', 'í', 'ǐ', 'ì', 'i'],
+      'o': ['ō', 'ó', 'ǒ', 'ò', 'o'],
+      'u': ['ū', 'ú', 'ǔ', 'ù', 'u'],
+      'ü': ['ǖ', 'ǘ', 'ǚ', 'ǜ', 'ü'],
+      'v': ['ǖ', 'ǘ', 'ǚ', 'ǜ', 'ü']  // v is sometimes used instead of ü
+    };
+
     this.doc.onmousemove = e => {
       if (!this.enabled || this.mouseDown) {
         this.hidePopup();
@@ -142,16 +153,85 @@ class Client {
 
   hidePopup() { return __guard__(this.getPopup(), x => x.style.display = "none"); }
 
+  // Helper function to apply a tone mark to a vowel at a specific index
+  applyToneToVowelAtIndex(text, vowel, index, tone) {
+    const tonedVowel = this.pinyinVowels[vowel][tone];
+    return text.substring(0, index) + tonedVowel + text.substring(index + 1);
+  }
+
+  // Convert pinyin with tone numbers (e.g., "yi1") to pinyin with diacritics (e.g., "yī")
+  convertPinyinToDiacritics(pinyin) {
+    if (!pinyin) return '';
+
+    // Split the input by spaces to handle multiple syllables
+    return pinyin.split(' ').map(syllable => {
+      // Replace "u:" with "ü" before processing
+      syllable = syllable.replace(/u:/g, 'ü');
+
+      // Extract the tone number (if any)
+      const toneMatch = syllable.match(/([a-zA-ZüÜ]+)([1-5])?/);
+      if (!toneMatch) return syllable;
+
+      const [, syllableWithoutTone, toneNumber] = toneMatch;
+      const tone = parseInt(toneNumber || '5') - 1; // Default to neutral tone (5)
+
+      // Special cases for vowel combinations
+      // For 'a', 'e', 'o' combinations, the tone goes on the first vowel
+      if (syllableWithoutTone.includes('ai')) {
+        return this.applyToneToVowelAtIndex(syllableWithoutTone, 'a', syllableWithoutTone.indexOf('a'), tone);
+      }
+      if (syllableWithoutTone.includes('ei')) {
+        return this.applyToneToVowelAtIndex(syllableWithoutTone, 'e', syllableWithoutTone.indexOf('e'), tone);
+      }
+      if (syllableWithoutTone.includes('ao')) {
+        return this.applyToneToVowelAtIndex(syllableWithoutTone, 'a', syllableWithoutTone.indexOf('a'), tone);
+      }
+      if (syllableWithoutTone.includes('ou')) {
+        return this.applyToneToVowelAtIndex(syllableWithoutTone, 'o', syllableWithoutTone.indexOf('o'), tone);
+      }
+
+      // For 'iu', 'ie', 'ui', the tone goes on the second vowel
+      if (syllableWithoutTone.includes('iu')) {
+        return this.applyToneToVowelAtIndex(syllableWithoutTone, 'u', syllableWithoutTone.indexOf('u'), tone);
+      }
+      if (syllableWithoutTone.includes('ie')) {
+        return this.applyToneToVowelAtIndex(syllableWithoutTone, 'e', syllableWithoutTone.indexOf('e'), tone);
+      }
+      if (syllableWithoutTone.includes('ui')) {
+        return this.applyToneToVowelAtIndex(syllableWithoutTone, 'i', syllableWithoutTone.indexOf('i'), tone);
+      }
+
+      // Find the vowel to modify with the tone mark
+      // Priority: a, o, e, i, u, ü
+      const vowelPriority = ['a', 'o', 'e', 'i', 'u', 'ü', 'v'];
+      let vowelToModify = '';
+      let vowelIndex = -1;
+
+      for (const vowel of vowelPriority) {
+        const index = syllableWithoutTone.indexOf(vowel);
+        if (index !== -1) {
+          vowelToModify = vowel;
+          vowelIndex = index;
+          break;
+        }
+      }
+
+      // If no vowel found, return the original syllable
+      if (vowelIndex === -1) return syllable;
+
+      // Replace the vowel with its tone variant
+      return this.applyToneToVowelAtIndex(syllableWithoutTone, vowelToModify, vowelIndex, tone);
+    }).join(' ');
+  }
+
   decorateRow(row) {
-    const kanji = row.kanji !== row.kana ? row.kanji : "";
     return `\
 <li>
-  <div class='kana'>${ row.kana }</div>
-  ${ kanji.length > 0 ? `<div class='kanji'>${kanji}</div>` : "" }
-  ${ this.showRomaji || this.showTranslation ? "<div class='translation'>" : "" }
-    ${ this.showRomaji ? `<div class='romaji'>[${row.romaji}]</div>` : "" }
+  <div class='kana'>${ this.convertPinyinToDiacritics(row.pinyin) }</div>
+  ${ row.hanzi.length > 0 ? `<div class='kanji'>${row.hanzi}</div>` : "" }
+  ${ this.showTranslation ? "<div class='translation'>" : "" }
     ${ this.showTranslation ? `${row.translation}` : "" }
-  ${ this.showRomaji || this.showTranslation ? "</div>" : "" }
+  ${ this.showTranslation ? "</div>" : "" }
 </li>\
 `;
   }
@@ -186,7 +266,6 @@ class Client {
   updateStatus(status) {
     this.enabled         = status.enabled;
     this.highlightText   = status.highlightText;
-    this.showRomaji      = status.showRomaji;
     this.showTranslation = status.showTranslation;
     this.lookupOnlyOnHotkey = status.lookupOnlyOnHotkey;
     this.lookupImgAlt = status.lookupImgAlt;
