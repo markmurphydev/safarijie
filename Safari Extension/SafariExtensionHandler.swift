@@ -7,7 +7,7 @@
 //
 
 import SafariServices
-import SafarikaiEngine
+import SafarijieEngine
 
 class SafariExtensionHandler: SFSafariExtensionHandler {
     private enum IncomingMessage: String {
