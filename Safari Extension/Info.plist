@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Safarikai</string>
+	<string>Safarijie</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -66,6 +66,6 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © James Chen. All rights reserved.</string>
 	<key>NSHumanReadableDescription</key>
-	<string>Translate Japanese words on web pages.</string>
+	<string>Translate Chinese words on web pages.</string>
 </dict>
 </plist>

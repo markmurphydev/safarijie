@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17140" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17140"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23727"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -12,11 +12,11 @@
                 <application id="hnw-xV-0zn" sceneMemberID="viewController">
                     <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
                         <items>
-                            <menuItem title="Safarikai" id="1Xt-HY-uBw">
+                            <menuItem title="Safarijie" id="1Xt-HY-uBw" userLabel="Safarijie">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Safarikai" systemMenu="apple" id="uQy-DD-JDr">
+                                <menu key="submenu" title="Safarijie" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
-                                        <menuItem title="About Safarikai" id="5kV-Vb-QxS">
+                                        <menuItem title="About Safarijie" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
@@ -30,7 +30,7 @@
                                             <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
-                                        <menuItem title="Hide Safarikai" keyEquivalent="h" id="Olw-nP-bQN">
+                                        <menuItem title="Hide Safarijie" keyEquivalent="h" id="Olw-nP-bQN">
                                             <connections>
                                                 <action selector="hide:" target="Ady-hI-5gd" id="PnN-Uc-m68"/>
                                             </connections>
@@ -48,7 +48,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
-                                        <menuItem title="Quit Safarikai" keyEquivalent="q" id="4sb-4s-VLi">
+                                        <menuItem title="Quit Safarijie" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
                                             </connections>
@@ -641,7 +641,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
-                                        <menuItem title="Safarikai Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                                        <menuItem title="Safarijie Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                             <connections>
                                                 <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
                                             </connections>
@@ -664,7 +664,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Safarikai" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Safarijie" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="380"/>
@@ -686,48 +686,48 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Safarikai" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="432"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="433"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="qLK-VL-DKN">
-                                <rect key="frame" x="18" y="276" width="444" height="96"/>
+                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="qLK-VL-DKN">
+                                <rect key="frame" x="18" y="277" width="444" height="96"/>
                                 <textFieldCell key="cell" id="nRy-H7-9Lq">
                                     <font key="font" metaFont="system"/>
                                     <string key="title">1. Open Safari and choose Safari &gt; Preferences.
 2. Select the Extensions tab.
-3. Find Safarikai in the list on the left, and enable it by selecting the checkbox.
+3. Find Safarijie in the list on the left, and enable it by selecting the checkbox.
 4. Close Safari Preferences.
 5. Quit this app.</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kvu-tk-ln5">
-                                <rect key="frame" x="18" y="392" width="444" height="20"/>
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kvu-tk-ln5">
+                                <rect key="frame" x="18" y="393" width="444" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="gLJ-Ie-1uy"/>
                                 </constraints>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Enable Safarikai in Safari" id="FeR-kP-gdk">
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Enable Safarijie in Safari" id="FeR-kP-gdk">
                                     <font key="font" metaFont="systemSemibold" size="15"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PyK-m3-tRq">
-                                <rect key="frame" x="13" y="227" width="454" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="KXP-Nc-AsD"/>
-                                </constraints>
+                                <rect key="frame" x="13" y="228" width="454" height="34"/>
                                 <buttonCell key="cell" type="push" title="Open Safari Preferences" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BFF-E9-nm1">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="KXP-Nc-AsD"/>
+                                </constraints>
                                 <connections>
                                     <action selector="openSafariPreferences:" target="XfG-lQ-9wD" id="tgZ-Gf-nqH"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TyK-AW-gQZ">
-                                <rect key="frame" x="18" y="171" width="442" height="18"/>
+                                <rect key="frame" x="18" y="172" width="442" height="18"/>
                                 <buttonCell key="cell" type="check" title="Highlight" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Ipb-At-jvT">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -737,7 +737,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VqQ-O9-Dwv">
-                                <rect key="frame" x="18" y="141" width="442" height="18"/>
+                                <rect key="frame" x="18" y="142" width="442" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show Romaji" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ZeZ-r4-oni">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -747,7 +747,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cbP-2x-Lkd">
-                                <rect key="frame" x="18" y="111" width="442" height="18"/>
+                                <rect key="frame" x="18" y="112" width="442" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show Translation" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="6O2-v6-PLr">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -757,7 +757,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2xC-as-E0L">
-                                <rect key="frame" x="18" y="81" width="442" height="18"/>
+                                <rect key="frame" x="18" y="82" width="442" height="18"/>
                                 <buttonCell key="cell" type="check" title="Lookup Only While Pressing ⌥" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wAL-s0-l1d">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -766,7 +766,7 @@
                                     <action selector="lookupOnlyOnHotkeyTogglePressed:" target="XfG-lQ-9wD" id="W7Y-kg-gKm"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rJb-qq-LSv">
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rJb-qq-LSv">
                                 <rect key="frame" x="18" y="20" width="82" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Results Limit" id="JcS-kL-6hd">
                                     <font key="font" metaFont="system"/>
@@ -775,21 +775,21 @@
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SHW-mH-srl">
-                                <rect key="frame" x="104" y="15" width="76" height="24"/>
+                                <rect key="frame" x="103" y="13" width="78" height="27"/>
+                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="W5d-3N-r7e">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="message"/>
+                                    <menu key="menu" id="A2U-SP-OfN"/>
+                                </popUpButtonCell>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="71" id="dUc-JE-l6I"/>
                                 </constraints>
-                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="W5d-3N-r7e">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="A2U-SP-OfN"/>
-                                </popUpButtonCell>
                                 <connections>
                                     <action selector="resultLimitPressed:" target="XfG-lQ-9wD" id="l5a-uE-SuB"/>
                                 </connections>
                             </popUpButton>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qL8-gs-Q1D">
-                                <rect key="frame" x="18" y="206" width="444" height="20"/>
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qL8-gs-Q1D">
+                                <rect key="frame" x="18" y="207" width="444" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="5WN-5W-I8r"/>
                                 </constraints>
@@ -800,7 +800,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DxA-cC-M3n">
-                                <rect key="frame" x="18" y="51" width="442" height="18"/>
+                                <rect key="frame" x="18" y="52" width="442" height="18"/>
                                 <buttonCell key="cell" type="check" title="Lookup Alt Text in Images" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="uVi-fw-Nco">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>

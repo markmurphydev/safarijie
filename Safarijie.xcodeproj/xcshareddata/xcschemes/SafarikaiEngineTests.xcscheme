@@ -17,9 +17,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1AF01BE521675B2B0004E75E"
-               BuildableName = "SafarikaiEngineTests.xctest"
-               BlueprintName = "SafarikaiEngineTests"
-               ReferencedContainer = "container:Safarikai.xcodeproj">
+               BuildableName = "SafarijieEngineTests.xctest"
+               BlueprintName = "SafarijieEngineTests"
+               ReferencedContainer = "container:Safarijie.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -39,9 +39,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1A5D353D1DE9749600827D78"
-            BuildableName = "Safarikai.app"
-            BlueprintName = "Safarikai"
-            ReferencedContainer = "container:Safarikai.xcodeproj">
+            BuildableName = "Safarijie.app"
+            BlueprintName = "Safarijie"
+            ReferencedContainer = "container:Safarijie.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1A5D353D1DE9749600827D78"
-            BuildableName = "Safarikai.app"
-            BlueprintName = "Safarikai"
-            ReferencedContainer = "container:Safarikai.xcodeproj">
+            BuildableName = "Safarijie.app"
+            BlueprintName = "Safarijie"
+            ReferencedContainer = "container:Safarijie.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
